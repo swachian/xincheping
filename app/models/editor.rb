@@ -22,7 +22,7 @@ class Editor < ActiveRecord::Base
   #概要显示编辑们的信息
   def self.digest
     Editor.order(last_at: :desc).each do |e|
-      puts "#{e.name},\t#{e.guandiancount}, last_at: #{e.last_at.to_s[0..9]}, first_at: #{e.first_at.to_s[0..9]}"
+      puts "#{e.name},\t#{e.guandiancount}, 观点最后时间: #{e.last_at.to_s[0..9]}, 观点初发时间: #{e.first_at.to_s[0..9]}"
     end
     nil
   end
