@@ -1,4 +1,5 @@
 class Changce < ActiveRecord::Base
+  validates_uniqueness_of :link
   belongs_to :editor
 
   # 对新车评长测文章进行迭代获取，具体内容的扒取由fetch_one_che执行
@@ -41,11 +42,21 @@ class Changce < ActiveRecord::Base
       cc[:link] = changce.css(".cc_right h2 a")[0]['href']
       cc[:context] = ''
       cc[:chexin] = changce.css(".cc_right span a")[1].content.strip
-      editor = Editor.findauthorforchangce(author, cc[:c_at])
-      cc[:editor_id] = editor.id
-      Changce.create(cc)
-      editor.changcejia(cc[:c_at])
+
+      self.add(cc, author)
       #p cc
     end
+  end
+
+  #把fetch_one_page中的数据库操作提取成此函数
+  def self.add(cc={}, author)
+    self.transaction do
+      editor = Editor.findauthorforchangce(author, cc[:c_at])
+      cc[:editor_id] = editor.id
+      Changce.create!(cc)
+      editor.changcejia(cc[:c_at])
+    end
+    rescue
+      puts "链接已重复"
   end
 end
