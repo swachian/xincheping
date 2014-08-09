@@ -11,12 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140809031937) do
+ActiveRecord::Schema.define(version: 20140809063639) do
+
+  create_table "changces", force: true do |t|
+    t.integer  "editor_id"
+    t.datetime "c_at"
+    t.string   "link"
+    t.string   "title"
+    t.text     "context"
+    t.string   "chexin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "changces", ["editor_id"], name: "index_changces_on_editor_id"
 
   create_table "editors", force: true do |t|
     t.string   "name"
     t.datetime "first_at"
     t.datetime "last_at"
+    t.datetime "cc_first_at"
+    t.datetime "cc_last_at"
     t.integer  "guandiancount", default: 0
     t.integer  "changcecount",  default: 0
     t.datetime "created_at"
