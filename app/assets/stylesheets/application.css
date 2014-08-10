@@ -12,5 +12,6 @@
  *
  *= require bootstrap
  *= require bootstrap-theme
+ *= require dashboard
  *= require_self
  */
