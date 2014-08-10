@@ -10,5 +10,7 @@ class CreateGuandians < ActiveRecord::Migration
       t.timestamps
     end
     add_index :guandians, :editor_id
+    add_index :guandians, :link
+    add_index :guandians, :c_at
   end
 end

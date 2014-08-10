@@ -1,4 +1,5 @@
 class Guandian < ActiveRecord::Base
+  validates_uniqueness_of :link
   belongs_to :editor
 
   # 对新车评分页的观点文章进行迭代获取，具体内容的扒取由fetch_one_page执行
@@ -21,12 +22,21 @@ class Guandian < ActiveRecord::Base
       gd[:c_at] = guandian.css(".opi-index-time")[0].content
       gd[:link] = guandian.css(".opi-index-per-t a")[0]['href']
       gd[:context] = ''
+      #p gd
+      self.add(gd, author)
+    end
+  end
+
+  #把fetch_one_page中的数据库操作提取成此函数
+  def self.add(gd={}, author)
+    self.transaction do
       editor = Editor.findauthor(author, gd[:c_at])
       gd[:editor_id] = editor.id
-      Guandian.create(gd)
+      Guandian.create!(gd)
       editor.guandianjia(gd[:c_at])
-      #p gd
     end
+    rescue
+      puts "链接已重复"
   end
 
 end

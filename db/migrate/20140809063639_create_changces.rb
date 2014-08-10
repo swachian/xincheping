@@ -11,5 +11,8 @@ class CreateChangces < ActiveRecord::Migration
       t.timestamps
     end
     add_index :changces, :editor_id
+    add_index :changces, :link
+    add_index :changces, :c_at
+    add_index :changces, :chexin
   end
 end

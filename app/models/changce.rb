@@ -38,7 +38,6 @@ class Changce < ActiveRecord::Base
       author = $1 if ar =~ /作者：(.+)  /
       cc_left = changce.css(".cc_left")
       cc[:c_at] = cc_left.css("i")[0].content+"-"+cc_left.css("em")[0].content
-
       cc[:link] = changce.css(".cc_right h2 a")[0]['href']
       cc[:context] = ''
       cc[:chexin] = changce.css(".cc_right span a")[1].content.strip
