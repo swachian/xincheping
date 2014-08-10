@@ -1,0 +1,26 @@
+<h1 class="page-header">编辑列表</h1>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>编号</th>
+        <th>编辑</th>
+        <th>长测文章数</th>
+        <th>观点数</th>
+        <th>时间</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @editors.each do |ed| %>
+         <tr>
+           <td><%=ed.id%></td>
+           <td><%=link_to ed.name, '', target: "_blank"%></td>
+           <td><%=ed.changcecount%></td>
+           <td><%=ed.guandiancount%></td>
+           <td><%=ed.first_at%></td>
+         </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+</div>

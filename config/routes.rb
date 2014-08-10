@@ -1,20 +1,7 @@
 Rails.application.routes.draw do
-  get 'changces/new'
 
-  get 'changces/create'
 
-  get 'changces/update'
-
-  get 'changces/index'
-
-  get 'changce/new'
-
-  get 'changce/create'
-
-  get 'changce/update'
-
-  get 'changce/index'
-
+  resources :editors
   resources :changces
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
