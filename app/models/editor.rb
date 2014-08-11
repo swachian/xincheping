@@ -40,8 +40,8 @@ class Editor < ActiveRecord::Base
   #概要显示编辑们的信息
   def self.digest
     Editor.order(changcecount: :desc,last_at: :desc).each do |e|
-      puts "#{e.name},\t长测文章数: #{e.changcecount},  长测最后时间: #{e.cc_last_at.to_s[0..9]}, 长测初发时间: #{e.cc_first_at.to_s[0..9]}" +
-      "\t观点文章数: #{e.guandiancount}, 观点最后时间: #{e.last_at.to_s[0..9]}, 观点初发时间: #{e.first_at.to_s[0..9]}"
+      #puts "#{e.name},\t长测文章数: #{e.changcecount},  长测最后时间: #{e.cc_last_at.to_s[0..9]}, 长测初发时间: #{e.cc_first_at.to_s[0..9]}" +
+      #"\t观点文章数: #{e.guandiancount}, 观点最后时间: #{e.last_at.to_s[0..9]}, 观点初发时间: #{e.first_at.to_s[0..9]}"
     end
   end
 

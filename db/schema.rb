@@ -24,7 +24,10 @@ ActiveRecord::Schema.define(version: 20140809063639) do
     t.datetime "updated_at"
   end
 
+  add_index "changces", ["c_at"], name: "index_changces_on_c_at"
+  add_index "changces", ["chexin"], name: "index_changces_on_chexin"
   add_index "changces", ["editor_id"], name: "index_changces_on_editor_id"
+  add_index "changces", ["link"], name: "index_changces_on_link"
 
   create_table "editors", force: true do |t|
     t.string   "name"
@@ -50,6 +53,8 @@ ActiveRecord::Schema.define(version: 20140809063639) do
     t.datetime "updated_at"
   end
 
+  add_index "guandians", ["c_at"], name: "index_guandians_on_c_at"
   add_index "guandians", ["editor_id"], name: "index_guandians_on_editor_id"
+  add_index "guandians", ["link"], name: "index_guandians_on_link"
 
 end

@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
 
-  resources :editors
-  resources :changces
+  resources :editors, :changces, :guangdians
+  get 'changces/author/:id' => 'changces#author'
+  get 'guandians/author/:id' => 'guandians#author'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

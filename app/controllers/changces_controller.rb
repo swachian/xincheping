@@ -11,4 +11,9 @@ class ChangcesController < ApplicationController
   def index
     @changces = Changce.all
   end
+
+  def author
+    @changces = Changce.where(:editor_id => params[:id]) 
+    render :action => :index
+  end
 end

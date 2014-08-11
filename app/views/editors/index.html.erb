@@ -14,9 +14,9 @@
       <% @editors.each do |ed| %>
          <tr>
            <td><%=ed.id%></td>
-           <td><%=link_to ed.name, '', target: "_blank"%></td>
-           <td><%=ed.changcecount%></td>
-           <td><%=ed.guandiancount%></td>
+           <td><%=ed.name%></td>
+           <td><%=link_to ed.changcecount, "/changces/author/#{ed.id}"%></td>
+           <td><%=link_to ed.guandiancount, "/guandians/author/#{ed.id}"%></td>
            <td><%=ed.first_at%></td>
          </tr>
       <% end %>
