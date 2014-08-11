@@ -1,5 +1,6 @@
 # 编辑的类
 class Editor < ActiveRecord::Base
+  enum status: [:活跃, :已归档] 
   has_many :guandians
   has_many :changces
 

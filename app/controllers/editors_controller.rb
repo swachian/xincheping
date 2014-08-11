@@ -3,6 +3,14 @@ class EditorsController < ApplicationController
     @editors = Editor.digest
   end
 
+  def status
+    @editor = Editor.find(params[:id])
+    @editor.status = params[:status]
+    @editor.save
+    @editors = Editor.digest
+    render :index
+  end
+
   def delete
   end
 

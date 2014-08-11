@@ -1,4 +1,6 @@
-<h1 class="page-header">编辑列表</h1>
+<h1 class="page-header">编辑列表
+  <button class="btn btn-danger" type="button" id="bjeditor">修改</button>
+</h1>
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
@@ -8,6 +10,7 @@
         <th>长测文章数</th>
         <th>观点数</th>
         <th>时间</th>
+        <th class="xiugai">修改</th>
       </tr>
     </thead>
     <tbody>
@@ -17,7 +20,11 @@
            <td><%=ed.name%></td>
            <td><%=link_to ed.changcecount, "/changces/author/#{ed.id}"%></td>
            <td><%=link_to ed.guandiancount, "/guandians/author/#{ed.id}"%></td>
-           <td><%=ed.first_at%></td>
+           <td>长测初始: <%=riqi ed.cc_first_at%>, 观点初始: <%=riqi ed.first_at%>
+           <br />
+           长测最后: <%=riqi ed.cc_last_at%>, 观点最后: <%=riqi ed.last_at%>
+           </td>
+           <td class="xiugai"><%=xiugai(ed)%></td>
          </tr>
       <% end %>
 

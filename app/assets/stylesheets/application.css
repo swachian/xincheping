@@ -15,3 +15,6 @@
  *= require dashboard
  *= require_self
  */
+.xiugai {
+  display: none;
+}

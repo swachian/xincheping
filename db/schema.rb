@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140809063639) do
+ActiveRecord::Schema.define(version: 20140811081455) do
 
   create_table "changces", force: true do |t|
     t.integer  "editor_id"
@@ -39,9 +39,11 @@ ActiveRecord::Schema.define(version: 20140809063639) do
     t.integer  "changcecount",  default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "status",        default: 0
   end
 
   add_index "editors", ["name"], name: "index_editors_on_name"
+  add_index "editors", ["status"], name: "index_editors_on_status"
 
   create_table "guandians", force: true do |t|
     t.integer  "editor_id"
