@@ -9,7 +9,7 @@ class Pingce < ActiveRecord::Base
     total_page = $1.to_i if my_link =~ /(\d+)/
 
     1.upto(total_page) do |i|
-      fetch_one_page("http://pingce.xincheping.com/pingce/p#{i}.html")      
+      fetch_one_page("http://pingce.xincheping.com/pingce/p#{i}.html")
     end
   end
 
@@ -28,7 +28,7 @@ class Pingce < ActiveRecord::Base
       doc2 = Nokogiri::HTML(open(pc[:link]), nil, "GBK")
       editinfo = doc2.css(".editinfo p")[0].children()[2].content
       author = $1 if editinfo =~ /作者：(.+) /
-      pc[:c_at] = $1 if editinfo =~ /(\d{4}-\d{2}-\d{2})/ 
+      pc[:c_at] = $1 if editinfo =~ /(\d{4}-\d{2}-\d{2})/
       pc[:context] = ''
 
       self.add(pc, author)
@@ -39,6 +39,7 @@ class Pingce < ActiveRecord::Base
   #把fetch_one_page中的数据库操作提取成此函数
   def self.add(pc={}, author)
     self.transaction do
+      author = author.split(/\s|、|\//)[0]
       editor = Editor.findauthorforpingce(author, pc[:c_at])
       pc[:editor_id] = editor.id
       Pingce.create!(pc)

@@ -1,8 +1,9 @@
 # 编辑的类
 class Editor < ActiveRecord::Base
-  enum status: [:活跃, :已归档] 
+  enum status: [:活跃, :已归档]
   has_many :guandians
   has_many :changces
+  has_many :pingces
 
   #根据输入的作者名，和编辑名进行比对，如无此编辑则认为是新作者
   def self.findauthor(name, c_at)
