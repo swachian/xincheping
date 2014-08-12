@@ -1,0 +1,2 @@
+module PingcesHelper
+end

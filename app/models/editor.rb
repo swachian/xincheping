@@ -20,6 +20,14 @@ class Editor < ActiveRecord::Base
     end
   end
 
+  #根据输入的作者名，和编辑名进行比对，如无此编辑则认为是新作者,针对评车
+  def self.findauthorforpingce(name, c_at)
+    self.find_or_create_by(name: name) do |editor|
+      editor.pc_first_at = c_at
+      editor.pc_last_at = c_at
+    end
+  end
+
   # 修改观点计数，同时根据时间戳修改编辑出现的最早和最晚时间
   def guandianjia(c_at)
     self.guandiancount += 1
@@ -35,7 +43,14 @@ class Editor < ActiveRecord::Base
     self.cc_first_at = c_at if (self.cc_first_at.blank? || self.cc_first_at > c_at)
     self.cc_last_at = c_at if (self.cc_last_at.blank? || self.cc_last_at < c_at)
     self.save
+  end
 
+  # 修改评测计数，同时根据时间戳修改编辑出现的最早和最晚时间
+  def pingcejia(c_at)
+    self.pingcecount += 1
+    self.pc_first_at = c_at if (self.pc_first_at.blank? || self.pc_first_at > c_at)
+    self.pc_last_at = c_at if (self.pc_last_at.blank? || self.pc_last_at < c_at)
+    self.save
   end
 
   #概要显示编辑们的信息

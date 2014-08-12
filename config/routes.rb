@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
 
-  resources :editors, :changces, :guangdians
+  resources :editors, :changces, :guandians, :pingces
   post 'editors/status/:id' => 'editors#status'
   get 'changces/author/:id' => 'changces#author'
   get 'guandians/author/:id' => 'guandians#author'
+  get 'pingces/author/:id' => 'pingces#author'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

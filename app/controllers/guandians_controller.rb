@@ -1,6 +1,6 @@
 class GuandiansController < ApplicationController
   def index
-    
+    @guandians = Guandian.all
   end
 
   def author

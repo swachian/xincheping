@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811081455) do
+ActiveRecord::Schema.define(version: 20140812060021) do
 
   create_table "changces", force: true do |t|
     t.integer  "editor_id"
@@ -37,6 +37,9 @@ ActiveRecord::Schema.define(version: 20140811081455) do
     t.datetime "cc_last_at"
     t.integer  "guandiancount", default: 0
     t.integer  "changcecount",  default: 0
+    t.datetime "pc_first_at"
+    t.datetime "pc_last_at"
+    t.integer  "pingcecount",   default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "status",        default: 0
@@ -58,5 +61,22 @@ ActiveRecord::Schema.define(version: 20140811081455) do
   add_index "guandians", ["c_at"], name: "index_guandians_on_c_at"
   add_index "guandians", ["editor_id"], name: "index_guandians_on_editor_id"
   add_index "guandians", ["link"], name: "index_guandians_on_link"
+
+  create_table "pingces", force: true do |t|
+    t.integer  "editor_id"
+    t.datetime "c_at"
+    t.string   "title"
+    t.text     "context"
+    t.string   "link"
+    t.integer  "clicks"
+    t.string   "jielun"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pingces", ["c_at"], name: "index_pingces_on_c_at"
+  add_index "pingces", ["clicks"], name: "index_pingces_on_clicks"
+  add_index "pingces", ["editor_id"], name: "index_pingces_on_editor_id"
+  add_index "pingces", ["jielun"], name: "index_pingces_on_jielun"
 
 end

@@ -1,0 +1,28 @@
+<h1 class="page-header">评测列表</h1>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>编号</th>
+        <th>标题</th>
+        <th>作者</th>
+        <th>发表时间</th>
+        <th>点击数量</th>
+        <th>推荐等级</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @pingces.each do |pc| %>
+         <tr>
+           <td><%=pc.id%></td>
+           <td><%=link_to pc.title, pc.link, target: "_blank"%></td>
+           <td><%=pc.editor.name%></td>
+           <td><%=pc.c_at.to_s[0..9]%></td>
+           <td><%=pc.clicks%></td>
+           <td><%=pc.jielun%></td>
+         </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+</div>
