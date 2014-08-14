@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
 
-  resources :editors, :changces, :guandians, :pingces
-  post 'editors/status/:id' => 'editors#status'
+  resources :changces, :guandians, :pingces
+  resources :editors do 
+    get :actives, on: :collection
+    post :status, on: :member
+  end
+  resources :daogoulists, :daogous
   get 'changces/author/:id' => 'changces#author'
   get 'guandians/author/:id' => 'guandians#author'
   get 'pingces/author/:id' => 'pingces#author'

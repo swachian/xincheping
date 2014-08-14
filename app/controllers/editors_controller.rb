@@ -11,6 +11,11 @@ class EditorsController < ApplicationController
     render :index
   end
 
+  def actives
+    @editors = Editor.活跃   
+    render :index
+  end
+
   def delete
   end
 

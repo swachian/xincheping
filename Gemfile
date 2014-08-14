@@ -38,6 +38,7 @@ gem 'thin'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'kaminari'
 gem 'nokogiri'
 
 gem 'pry-rails', group: :development

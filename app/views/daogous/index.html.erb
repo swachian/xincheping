@@ -1,0 +1,25 @@
+<h1 class="page-header">导购问答</h1>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>编号</th>
+        <th>问题</th>
+        <th>回答</th>
+        <th>发表时间</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @daogous.each do |dg| %>
+         <tr>
+           <td><%=dg.id%></td>
+           <td><%=raw dg.wenti%></td>
+           <td><%=dg.zjhd%></td>
+           <td><%=dg.c_at.to_s[0..9]%></td>
+         </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+  <%=paginate @daogous%>
+</div>

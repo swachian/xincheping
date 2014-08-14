@@ -1,0 +1,26 @@
+<h1 class="page-header">导购专题</h1>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>编号</th>
+        <th>标题</th>
+        <th>链接</th>
+        <th>总页数</th>
+        <th>专家回答页数</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @daogoulists.each do |dgl| %>
+         <tr>
+           <td><%=dgl.id%></td>
+           <td><%=link_to dgl.title, dgl.link, target: "_blank"%></td>
+           <td><%=dgl.link%></td>
+           <td><%=dgl.alltotalpage%></td>
+           <td><%=dgl.zjtotalpage%></td>
+         </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+</div>

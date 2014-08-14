@@ -15,9 +15,9 @@
       </tr>
     </thead>
     <tbody>
-      <% @editors.each do |ed| %>
+      <% @editors.each_with_index do |ed, i| %>
          <tr>
-           <td><%=ed.id%></td>
+           <td><%=i+1%></td>
            <td><%=ed.name%></td>
            <td><%=link_to ed.changcecount, "/changces/author/#{ed.id}"%></td>
            <td><%=link_to ed.guandiancount, "/guandians/author/#{ed.id}"%></td>

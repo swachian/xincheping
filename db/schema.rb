@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140812060021) do
+ActiveRecord::Schema.define(version: 20140814065159) do
 
   create_table "changces", force: true do |t|
     t.integer  "editor_id"
@@ -28,6 +28,31 @@ ActiveRecord::Schema.define(version: 20140812060021) do
   add_index "changces", ["chexin"], name: "index_changces_on_chexin"
   add_index "changces", ["editor_id"], name: "index_changces_on_editor_id"
   add_index "changces", ["link"], name: "index_changces_on_link"
+
+  create_table "daogoulists", force: true do |t|
+    t.string   "title"
+    t.string   "link"
+    t.integer  "alltotalpage"
+    t.integer  "zjtotalpage"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "daogous", force: true do |t|
+    t.integer  "daogoulist_id"
+    t.datetime "c_at"
+    t.string   "title"
+    t.text     "wenti"
+    t.text     "zjhd"
+    t.integer  "editor_id"
+    t.string   "link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "daogous", ["c_at"], name: "index_daogous_on_c_at"
+  add_index "daogous", ["daogoulist_id"], name: "index_daogous_on_daogoulist_id"
+  add_index "daogous", ["editor_id"], name: "index_daogous_on_editor_id"
 
   create_table "editors", force: true do |t|
     t.string   "name"
