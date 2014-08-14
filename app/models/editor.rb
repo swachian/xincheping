@@ -29,6 +29,13 @@ class Editor < ActiveRecord::Base
     end
   end
 
+  def self.findauthorfordaogou(name, c_at)
+    self.find_or_create_by(name: name) do |editor|
+      editor.first_at = c_at
+      editor.last_at = c_at
+    end
+  end
+
   # 修改观点计数，同时根据时间戳修改编辑出现的最早和最晚时间
   def guandianjia(c_at)
     self.guandiancount += 1

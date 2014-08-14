@@ -35,4 +35,24 @@ class Daogou < ActiveRecord::Base
   rescue Exception => ex
     puts ex
   end
+
+  #搜索专家回答zjhd，找出全部的回答编辑
+  def self.find_editors
+    s1 = Set.new
+    h1 = {}
+    Daogou.all.each do |dg|
+      if dg.zjhd =~ /【(车评人|编辑：|编辑；)?(：|\s|[[:space:]]|&nbsp;|nbsp;)?(.+)】/
+        zj = $3.strip
+        s1 << zj
+        count = h1[zj] || 1
+        h1[zj] = count + 1
+        editor = Editor.findauthorfordaogou(zj, dg.c_at)
+        dg.editor = editor
+        dg.save
+      end
+    end
+    s1.each {|zj| puts zj + ": " + h1[zj].to_s}
+    puts s1.reduce(0) {|total, zj| total += h1[zj]}
+    s1
+  end
 end

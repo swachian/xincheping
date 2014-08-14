@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
   resources :changces, :guandians, :pingces
-  resources :editors do 
+  resources :editors do
     get :actives, on: :collection
     post :status, on: :member
   end
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'changces/author/:id' => 'changces#author'
   get 'guandians/author/:id' => 'guandians#author'
   get 'pingces/author/:id' => 'pingces#author'
+  get 'daogous/author/:id' => 'daogous#author'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

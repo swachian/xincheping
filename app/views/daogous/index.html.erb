@@ -7,6 +7,7 @@
         <th>问题</th>
         <th>回答</th>
         <th>发表时间</th>
+        <th>所属专题</th>
       </tr>
     </thead>
     <tbody>
@@ -16,6 +17,7 @@
            <td><%=raw dg.title%></td>
            <td><%=dg.zjhd%></td>
            <td><%=dg.c_at.to_s[0..9]%></td>
+           <td><%=dg.daogoulist.title%></td>
          </tr>
       <% end %>
 
