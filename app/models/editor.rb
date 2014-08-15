@@ -61,6 +61,13 @@ class Editor < ActiveRecord::Base
     self.save
   end
 
+  #修改过专家回答计数
+  def zjhdjia(c_at)
+    self.zjhdcount += 1
+    self.zjhd_first_at = c_at if (self.zjhd_first_at.blank? || self.zjhd_first_at > c_at)
+    self.zjhd_last_at = c_at if (self.zjhd_last_at.blank? || self.zjhd_last_at < c_at)
+    self.save
+  end
   #概要显示编辑们的信息
   def self.digest
     Editor.order(changcecount: :desc,last_at: :desc).each do |e|

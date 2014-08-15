@@ -6,6 +6,7 @@
         <th>编号</th>
         <th>标题</th>
         <th>链接</th>
+        <th>专家回答数</th>
         <th>总页数</th>
         <th>专家回答页数</th>
       </tr>
@@ -16,6 +17,7 @@
            <td><%=dgl.id%></td>
            <td><%=link_to dgl.title, dgl.link, target: "_blank"%></td>
            <td><%=dgl.link%></td>
+           <td><%=link_to dgl.daogous.count, dgdglist_path(id: dgl.id)%></td>
            <td><%=dgl.alltotalpage%></td>
            <td><%=dgl.zjtotalpage%></td>
          </tr>

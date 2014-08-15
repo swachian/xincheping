@@ -9,4 +9,8 @@ class DaogousController < ApplicationController
     render :action => :index
   end
 
+  def daogoulist 
+    @daogous = Daogou.where(:daogoulist_id => params[:id]).order("c_at desc").page(params[:page]).per(50) 
+    render :action => :index
+  end
 end

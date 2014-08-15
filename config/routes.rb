@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'guandians/author/:id' => 'guandians#author'
   get 'pingces/author/:id' => 'pingces#author'
   get 'daogous/author/:id' => 'daogous#author'
+  get 'daogous/daogoulist/:id' => 'daogous#daogoulist', as: :dgdglist
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
