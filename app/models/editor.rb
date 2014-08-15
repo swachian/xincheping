@@ -31,8 +31,8 @@ class Editor < ActiveRecord::Base
 
   def self.findauthorfordaogou(name, c_at)
     self.find_or_create_by(name: name) do |editor|
-      editor.first_at = c_at
-      editor.last_at = c_at
+      editor.zjhd_first_at = c_at
+      editor.zjhd_last_at = c_at
     end
   end
 

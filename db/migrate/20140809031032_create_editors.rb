@@ -13,6 +13,10 @@ class CreateEditors < ActiveRecord::Migration
       t.timestamp :pc_last_at #车评的初始时间
       t.integer :pingcecount, :default => 0 #车评文章计数
 
+      t.timestamp :zjhd_first_at #专家回答的最后时间
+      t.timestamp :zjhd_last_at #专家回答的初始时间
+      t.integer :zjhdcount, :default => 0 #专家回答计数
+
       t.timestamps
     end
 
