@@ -45,6 +45,8 @@ class Changce < ActiveRecord::Base
       self.add(cc, author)
       #p cc
     end
+  rescue Exception => ex
+    puts ex
   end
 
   #把fetch_one_page中的数据库操作提取成此函数
@@ -57,5 +59,6 @@ class Changce < ActiveRecord::Base
     end
     rescue
       puts "链接已重复"
+      raise "#{cc[:chexin]}数据已更新"
   end
 end

@@ -63,7 +63,7 @@ class Editor < ActiveRecord::Base
 
   #修改过专家回答计数
   def zjhdjia(c_at)
-    self.zjhdcount += 1
+    #self.zjhdcount += 1
     self.zjhd_first_at = c_at if (self.zjhd_first_at.blank? || self.zjhd_first_at > c_at)
     self.zjhd_last_at = c_at if (self.zjhd_last_at.blank? || self.zjhd_last_at < c_at)
     self.save

@@ -41,17 +41,30 @@ class Daogou < ActiveRecord::Base
     s1 = Set.new
     h1 = {}
     Daogou.all.each do |dg|
-      if dg.zjhd =~ /【(车评人|编辑：|编辑；)?(：|\s|[[:space:]]|&nbsp;|nbsp;)?(.+)】/
+      if dg.zjhd =~ /【(车评人|编辑：|编辑；)?(：|\s| |:|：|;|; |；|[[:space:]]|&nbsp;|nbsp;)?(.+)( |[[:space:]])?】/
         zj = $3.strip
+        if zj.size > 3
+          next
+        end
+        zj ='盛韶光' if zj == '数十个'
+        zj ='许恒生' if zj == '徐恒生'
+        zj ='郝舟' if zj =~ /郝舟/
+        zj = '邓宣' if zj == '车评人'
         s1 << zj
         count = h1[zj] || 1
         h1[zj] = count + 1
         editor = Editor.findauthorfordaogou(zj, dg.c_at)
+        editor.zjhdjia(dg.c_at)
         dg.editor = editor
         dg.save
       end
     end
-    s1.each {|zj| puts zj + ": " + h1[zj].to_s}
+    s1.each do |zj|
+      puts zj + ": " + h1[zj].to_s
+      editor = Editor.find_by_name(zj)
+      editor.zjhdcount = h1[zj].to_s
+      editor.save 
+    end
     puts s1.reduce(0) {|total, zj| total += h1[zj]}
     s1
   end

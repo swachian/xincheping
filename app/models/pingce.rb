@@ -11,6 +11,8 @@ class Pingce < ActiveRecord::Base
     1.upto(total_page) do |i|
       fetch_one_page("http://pingce.xincheping.com/pingce/p#{i}.html")
     end
+  rescue Exception => ex
+    puts ex
   end
 
 
@@ -47,5 +49,6 @@ class Pingce < ActiveRecord::Base
     end
     rescue
       puts "链接已重复"
+      raise "评测数据已更新"
   end
 end

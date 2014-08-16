@@ -5,10 +5,12 @@ class Guandian < ActiveRecord::Base
   # 对新车评分页的观点文章进行迭代获取，具体内容的扒取由fetch_one_page执行
   def self.fetch
     #http://views.xincheping.com/p2.html
-    1.upto(137) do |n|
+    1.upto(10) do |n|
       page = "http://views.xincheping.com/p#{n}.html"
       fetch_one_page(page)
     end
+    resuce Exception=>ex
+      puts ex
   end
 
   # 输入为新车评的观点网页集合链接http://views.xincheping.com/p2.html，会扒取该页面上几篇文章的作者和编辑年月信息
@@ -37,6 +39,7 @@ class Guandian < ActiveRecord::Base
     end
     rescue
       puts "链接已重复"
+      raise "观点数据已更新"
   end
 
 end

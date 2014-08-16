@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'changces/author/:id' => 'changces#author'
   get 'guandians/author/:id' => 'guandians#author'
   get 'pingces/author/:id' => 'pingces#author'
-  get 'daogous/author/:id' => 'daogous#author'
+  get 'daogous/author/:id' => 'daogous#author', as: :daogous_author
   get 'daogous/daogoulist/:id' => 'daogous#daogoulist', as: :dgdglist
 
   # The priority is based upon order of creation: first created -> highest priority.

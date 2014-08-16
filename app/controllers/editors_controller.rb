@@ -12,7 +12,7 @@ class EditorsController < ApplicationController
   end
 
   def actives
-    @editors = Editor.活跃   
+    @editors = Editor.活跃.order("zjhdcount desc, changcecount desc")   
     render :index
   end
 
