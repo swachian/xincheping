@@ -13,3 +13,25 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function(){
+  $(document).keydown(function(e){
+    if (e.which == 37) {
+      prev = $("nav.pagination .page.current").prev().children();
+      console.log(prev.text());
+      //prev.click();
+      if (typeof prev.attr('href')  !== "undefined" )
+        window.location.href = prev.attr('href');
+    }
+
+    if (e.which == 39) {
+      next = $("nav.pagination .page.current").next().children();
+      console.log(next.text());
+      //prev.click();
+      if (typeof next.attr('href')  !== "undefined" )
+        window.location.href = next.attr('href');
+    }
+    console.log(e.which);
+  });
+
+});

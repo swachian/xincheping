@@ -51,7 +51,7 @@ class Daogou < ActiveRecord::Base
         zj ='郝舟' if zj =~ /郝舟/
         zj = '邓宣' if zj == '车评人'
         s1 << zj
-        count = h1[zj] || 1
+        count = h1[zj] || 0
         h1[zj] = count + 1
         editor = Editor.findauthorfordaogou(zj, dg.c_at)
         editor.zjhdjia(dg.c_at)
@@ -63,7 +63,7 @@ class Daogou < ActiveRecord::Base
       puts zj + ": " + h1[zj].to_s
       editor = Editor.find_by_name(zj)
       editor.zjhdcount = h1[zj].to_s
-      editor.save 
+      editor.save
     end
     puts s1.reduce(0) {|total, zj| total += h1[zj]}
     s1
