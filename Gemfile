@@ -1,4 +1,4 @@
-source 'http://ruby.taobao.org'
+source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -44,3 +44,5 @@ gem 'kaminari'
 gem 'nokogiri'
 
 gem 'pry-rails', group: :development
+
+gem 'rails_12factor', group: :production
