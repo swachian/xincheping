@@ -9,7 +9,7 @@ class Guandian < ActiveRecord::Base
       page = "http://views.xincheping.com/p#{n}.html"
       fetch_one_page(page)
     end
-    resuce Exception=>ex
+    rescue Exception => ex
       puts ex
   end
 

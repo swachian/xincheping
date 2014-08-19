@@ -40,6 +40,14 @@ class Daogoulist < ActiveRecord::Base
     end
   end
 
+  #每个实际的导购专题才有的方法,调用的是另一个类Daogou的类方法fetch_one_page,与fetch_all_daogous的区别在于只扫描最近的5页
+  def sync_daogous(pages=5)
+    1.upto([pages, alltotalpage].min) do |n|
+      page = link.sub(/\d+\.html/, n.to_s) +".html"
+      Daogou.fetch_one_page(page, id)
+      puts "done"
+    end
+  end
   private
   def self.findtotalpage(doc)
     #通过末页的链接获取总的页数

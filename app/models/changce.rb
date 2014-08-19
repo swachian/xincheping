@@ -2,6 +2,16 @@ class Changce < ActiveRecord::Base
   validates_uniqueness_of :link
   belongs_to :editor
 
+  # 对新车评长测文章进行迭代获取，紧获取正在长测的车型，具体内容的扒取由fetch_one_che执行
+  def self.fetch_changceing
+    doc = Nokogiri::HTML(open('http://changce.xincheping.com/'), nil, "GBK")
+    doc.css("ul.lm_type_list_item")[0].css("li a:first-of-type").collect do |link|
+      link['href']
+    end.uniq.sort_by{|l| l.to_i}.each do |chelink|
+      fetch_one_che(chelink)
+    end
+  end
+
   # 对新车评长测文章进行迭代获取，具体内容的扒取由fetch_one_che执行
   def self.fetch
     doc = Nokogiri::HTML(open('http://changce.xincheping.com/'), nil, "GBK")
