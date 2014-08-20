@@ -9,7 +9,7 @@ class ChangcesController < ApplicationController
   end
 
   def index
-    @changces = Changce.all.eager_load(:editor)
+    @changces = Changce.order("changces.created_at desc, c_at desc").eager_load(:editor)
   end
 
   def author

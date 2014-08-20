@@ -7,6 +7,7 @@
         <th>标题</th>
         <th>作者</th>
         <th>发表时间</th>
+        <th>收入时间</th>
         <th>车型</th>
       </tr>
     </thead>
@@ -17,6 +18,7 @@
            <td><%=link_to cc.title, cc.link, target: "_blank"%></td>
            <td><%=cc.editor.name%></td>
            <td><%=cc.c_at.to_s[0..9]%></td>
+           <td><%=cc.created_at.to_s[0..9]%></td>
            <td><%=cc.chexin%></td>
          </tr>
       <% end %>
