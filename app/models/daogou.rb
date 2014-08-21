@@ -29,7 +29,7 @@ class Daogou < ActiveRecord::Base
     zjhd = doc.css(".exp-det-exp-answ-con.fs14")
     if !zjhd.blank?
       dg[:zjhd] = zjhd[0].content
-      Daogou.create(dg)
+      Daogou.create(dg).find_editor #创造导购记录并确定编辑
     end
     #p dg
   rescue Exception => ex
@@ -68,4 +68,23 @@ class Daogou < ActiveRecord::Base
     puts s1.reduce(0) {|total, zj| total += h1[zj]}
     s1
   end
+
+  #每个成员有的方法
+  def find_editor
+    if zjhd =~ /【(车评人|编辑：|编辑；)?(：|\s| |:|：|;|; |；|[[:space:]]|&nbsp;|nbsp;)?(.+)( |[[:space:]])?】/
+      zj = $3.strip
+      if zj.size > 3
+        return
+      end
+      zj ='盛韶光' if zj == '数十个'
+      zj ='许恒生' if zj == '徐恒生'
+      zj ='郝舟' if zj =~ /郝舟/
+      zj = '邓宣' if zj == '车评人'
+      editor = Editor.findauthorfordaogou(zj, c_at)
+      editor.zjhdjia(c_at)
+      self.editor = editor
+      save
+    end
+  end
+
 end

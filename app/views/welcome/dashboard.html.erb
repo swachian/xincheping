@@ -1,0 +1,28 @@
+<h1 class="page-header">一周汇总</h1>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>编号</th>
+        <th>标题</th>
+        <th>作者</th>
+        <th>发表时间</th>
+        <th>收入时间</th>
+        <th>内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @articles.each_with_index do |dg, i| %>
+         <tr>
+           <td><%=link_to i+1, "#{dg[:id]}"%></td>
+           <td ><%=link_to(raw(dg[:title]), dg[:link])%></td>
+           <td><%=dg[:editor][:name] if !dg[:editor].blank?%></td>
+           <td><%=dg[:c_at].to_s[0..9]%> </td>
+           <td><%=dg[:created_at].to_s[0..9]%> </td>
+           <td width="30%"><%=dg[:context]%></td>
+         </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+</div>

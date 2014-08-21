@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'welcome/dashboard'
+
   resources :changces, :guandians, :pingces
   resources :editors do
     get :actives, on: :collection
@@ -13,7 +15,7 @@ Rails.application.routes.draw do
   get 'daogous/author/:id' => 'daogous#author', as: :daogous_author
   get 'daogous/daogoulist/:id' => 'daogous#daogoulist', as: :dgdglist
 
-  root 'changces#index'
+  root 'welcome#dashboard'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
