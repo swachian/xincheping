@@ -1,6 +1,6 @@
 class GuandiansController < ApplicationController
   def index
-    @guandians = Guandian.all
+    @guandians = Guandian.order("c_at desc")
   end
 
   def author
