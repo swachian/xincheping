@@ -9,11 +9,11 @@ class ChangcesController < ApplicationController
   end
 
   def index
-    @changces = Changce.order("changces.created_at desc, c_at desc").eager_load(:editor)
+    @changces = Changce.order("chexin asc, changces.c_at desc").eager_load(:editor)
   end
 
   def author
-    @changces = Changce.where(:editor_id => params[:id]) 
+    @changces = Changce.where(:editor_id => params[:id]).order("c_at desc") 
     render :action => :index
   end
 end
