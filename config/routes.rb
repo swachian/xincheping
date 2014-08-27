@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     get :actives, on: :collection
     post :status, on: :member
   end
+
+  get 'daogous/search' => 'daogous#search'
+
   resources :daogoulists, :daogous
   get 'changces/author/:id' => 'changces#author'
   get 'guandians/author/:id' => 'guandians#author'
