@@ -44,7 +44,7 @@ class Changce < ActiveRecord::Base
       cc = {}
       cc[:title] = changce.css(".cc_right h2 a")[0].content
 
-      ar = changce.css(".cc_right span")[0].children()[3].content.strip
+      ar = changce.css(".cc_right span")[0].children()[2].content.strip
       author = $1 if ar =~ /作者：(.+)  /
       cc_left = changce.css(".cc_left")
       cc[:c_at] = cc_left.css("i")[0].content+"-"+cc_left.css("em")[0].content
