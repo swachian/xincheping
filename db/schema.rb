@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140814065159) do
+ActiveRecord::Schema.define(version: 20141009150222) do
 
   create_table "changces", force: true do |t|
     t.integer  "editor_id"
@@ -106,5 +106,18 @@ ActiveRecord::Schema.define(version: 20140814065159) do
   add_index "pingces", ["clicks"], name: "index_pingces_on_clicks", using: :btree
   add_index "pingces", ["editor_id"], name: "index_pingces_on_editor_id", using: :btree
   add_index "pingces", ["jielun"], name: "index_pingces_on_jielun", using: :btree
+
+  create_table "zixuns", force: true do |t|
+    t.integer  "editor_id"
+    t.datetime "c_at"
+    t.string   "title"
+    t.string   "link"
+    t.text     "context"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "zixuns", ["c_at"], name: "index_zixuns_on_c_at", using: :btree
+  add_index "zixuns", ["editor_id"], name: "index_zixuns_on_editor_id", using: :btree
 
 end
