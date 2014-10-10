@@ -44,7 +44,8 @@ class Zixun < ActiveRecord::Base
     self.add(zx, author)
     p zx
     puts author
-
+  rescue => ex
+    puts ex
   end
 
   #把fetch_one_page中的数据库操作提取成此函数
