@@ -11,6 +11,7 @@
         <th>观点数</th>
         <th>评测数</th>
         <th>回答数</th>
+        <th>资讯数</th>
         <th>时间</th>
         <th class="xiugai">修改</th>
       </tr>
@@ -24,6 +25,7 @@
            <td><%=link_to ed.guandiancount, "/guandians/author/#{ed.id}"%></td>
            <td><%=link_to ed.pingcecount, "/pingces/author/#{ed.id}"%></td>
            <td><%=link_to ed.zjhdcount, daogous_author_path(ed.id)%></td>
+           <td><%= ed.zixuncount %></td>
            <td>长测初始: <%=riqi ed.cc_first_at%>, 观点初始: <%=riqi ed.first_at%>, 车评初始: <%=riqi ed.pc_first_at%>, 导购回答: <%=riqi ed.zjhd_first_at%>
            <br />
            长测最后: <%=riqi ed.cc_last_at%>, 观点最后: <%=riqi ed.last_at%>, 车评最后: <%=riqi ed.pc_last_at%>, 导购回答: <%=riqi ed.zjhd_last_at%>

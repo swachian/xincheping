@@ -36,6 +36,13 @@ class Editor < ActiveRecord::Base
     end
   end
 
+  def self.findauthorforzixun(name, c_at)
+    self.find_or_create_by(name: name) do |editor|
+      editor.zixun_first_at = c_at
+      editor.zixun_last_at = c_at
+    end
+  end
+
   # 修改观点计数，同时根据时间戳修改编辑出现的最早和最晚时间
   def guandianjia(c_at)
     self.guandiancount += 1
@@ -66,6 +73,13 @@ class Editor < ActiveRecord::Base
     #self.zjhdcount += 1
     self.zjhd_first_at = c_at if (self.zjhd_first_at.blank? || self.zjhd_first_at > c_at)
     self.zjhd_last_at = c_at if (self.zjhd_last_at.blank? || self.zjhd_last_at < c_at)
+    self.save
+  end
+
+  def zixunjia(c_at)
+    self.zixuncount += 1
+    self.zixun_first_at = c_at if (self.zixun_first_at.blank? || self.zixun_first_at > c_at)
+    self.zixun_last_at = c_at if (self.zixun_last_at.blank? || self.zixun_last_at < c_at)
     self.save
   end
   #概要显示编辑们的信息

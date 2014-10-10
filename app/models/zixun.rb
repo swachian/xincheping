@@ -9,7 +9,7 @@ class Zixun < ActiveRecord::Base
     doc = Nokogiri::HTML(open("#{start_url}/p1.html"), nil, "GBK")
     my_link = doc.css("a.last-page")[0]['href'] #提取末页的链接后取得总页数
     total_page = $1.to_i if my_link =~ /(\d+)/
-    1.upto(2) do |i|
+    1.upto(total_page) do |i|
       fetch_one_page("#{start_url}/p#{i}.html")
     end
   rescue Exception => ex
@@ -26,7 +26,8 @@ class Zixun < ActiveRecord::Base
     puts links.size
     #links.each {|link| puts link}
     links.each {|link| fetch_one_zixun(link)}
-
+  rescue Exception => ex
+     puts ex
   end
 
   # http://news.xincheping.com/64691-1.html
@@ -40,7 +41,7 @@ class Zixun < ActiveRecord::Base
     zx[:c_at] = doc.css("span.news-det-ptime")[0].content
     zx[:context] = ''
 
-    #self.add(zx, author)
+    self.add(zx, author)
     p zx
     puts author
 
@@ -52,10 +53,11 @@ class Zixun < ActiveRecord::Base
       author = author.split(/\s|、|\//)[0]
       editor = Editor.findauthorforzixun(author, zx[:c_at])
       zx[:editor_id] = editor.id
-      Zixun.create!(zixun)
-      editor.pingcejia(pc[:c_at])
+      Zixun.create!(zx)
+      editor.zixunjia(zx[:c_at])
     end
-    rescue
+  rescue => ex
+      puts ex
       puts "链接已重复"
       #raise "资讯数据已更新"
   end

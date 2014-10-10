@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009150222) do
+ActiveRecord::Schema.define(version: 20141010134355) do
 
   create_table "changces", force: true do |t|
     t.integer  "editor_id"
@@ -60,17 +60,20 @@ ActiveRecord::Schema.define(version: 20141009150222) do
     t.datetime "last_at"
     t.datetime "cc_first_at"
     t.datetime "cc_last_at"
-    t.integer  "guandiancount", default: 0
-    t.integer  "changcecount",  default: 0
+    t.integer  "guandiancount",  default: 0
+    t.integer  "changcecount",   default: 0
     t.datetime "pc_first_at"
     t.datetime "pc_last_at"
-    t.integer  "pingcecount",   default: 0
+    t.integer  "pingcecount",    default: 0
     t.datetime "zjhd_first_at"
     t.datetime "zjhd_last_at"
-    t.integer  "zjhdcount",     default: 0
+    t.integer  "zjhdcount",      default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "status",        default: 0
+    t.integer  "status",         default: 0
+    t.datetime "zixun_first_at"
+    t.datetime "zixun_last_at"
+    t.integer  "zixuncount",     default: 0
   end
 
   add_index "editors", ["name"], name: "index_editors_on_name", using: :btree
