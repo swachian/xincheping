@@ -39,7 +39,32 @@ class Guandian < ActiveRecord::Base
     end
     rescue
       puts "链接已重复"
-      raise "观点数据已更新"
+      #raise "观点数据已更新"
+  end
+
+  #直接抓取http://views.xincheping.com/9-1.html之类的内容
+  def self.fetch_one_view(view)
+    puts view 
+    doc = Nokogiri::HTML(open(view), nil, "GBK")
+    gd = {}
+    gd[:title] = doc.css(".opi-det-tdt h1.fs24")[0].content
+    gd[:c_at] = doc.css(".opi-det-ptime")[0].content
+    gd[:link] = view
+    gd[:context] = doc.css("#zwnr")[0].content
+    author = doc.css(".opi-det-author a")[0].content
+    self.add(gd, author)
+  rescue =>ex
+    p ex
+    puts "空链接"
+    
+  end
+
+  # 通过view的序列直接获取内容
+  def self.fetch_all_view
+    7.upto(2000) do |n|
+      view = "http://views.xincheping.com/#{n}-1.html"
+      Guandian.fetch_one_view view
+    end
   end
 
 end
