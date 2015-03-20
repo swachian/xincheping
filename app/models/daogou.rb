@@ -13,6 +13,8 @@ class Daogou < ActiveRecord::Base
       wt =  a['href']
       self.fetch_one_daogou wt, daogoulist_id
     end
+  rescue Exception => ex
+    puts ex
   end
 
   # 输入具体的问题链接，获得导购的实际内容
