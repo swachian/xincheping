@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141010134355) do
+ActiveRecord::Schema.define(version: 20150520140150) do
 
-  create_table "changces", force: true do |t|
-    t.integer  "editor_id"
+  create_table "changces", force: :cascade do |t|
+    t.integer  "editor_id",  limit: 4
     t.datetime "c_at"
-    t.string   "link"
-    t.string   "title"
-    t.text     "context"
-    t.string   "chexin"
+    t.string   "link",       limit: 255
+    t.string   "title",      limit: 255
+    t.text     "context",    limit: 65535
+    t.string   "chexin",     limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -29,23 +29,23 @@ ActiveRecord::Schema.define(version: 20141010134355) do
   add_index "changces", ["editor_id"], name: "index_changces_on_editor_id", using: :btree
   add_index "changces", ["link"], name: "index_changces_on_link", using: :btree
 
-  create_table "daogoulists", force: true do |t|
-    t.string   "title"
-    t.string   "link"
-    t.integer  "alltotalpage"
-    t.integer  "zjtotalpage"
+  create_table "daogoulists", force: :cascade do |t|
+    t.string   "title",        limit: 255
+    t.string   "link",         limit: 255
+    t.integer  "alltotalpage", limit: 4
+    t.integer  "zjtotalpage",  limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "daogous", force: true do |t|
-    t.integer  "daogoulist_id"
+  create_table "daogous", force: :cascade do |t|
+    t.integer  "daogoulist_id", limit: 4
     t.datetime "c_at"
-    t.string   "title"
-    t.text     "wenti"
-    t.text     "zjhd"
-    t.integer  "editor_id"
-    t.string   "link"
+    t.string   "title",         limit: 255
+    t.text     "wenti",         limit: 65535
+    t.text     "zjhd",          limit: 65535
+    t.integer  "editor_id",     limit: 4
+    t.string   "link",          limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54,37 +54,44 @@ ActiveRecord::Schema.define(version: 20141010134355) do
   add_index "daogous", ["daogoulist_id"], name: "index_daogous_on_daogoulist_id", using: :btree
   add_index "daogous", ["editor_id"], name: "index_daogous_on_editor_id", using: :btree
 
-  create_table "editors", force: true do |t|
-    t.string   "name"
+  create_table "editors", force: :cascade do |t|
+    t.string   "name",           limit: 255
     t.datetime "first_at"
     t.datetime "last_at"
     t.datetime "cc_first_at"
     t.datetime "cc_last_at"
-    t.integer  "guandiancount",  default: 0
-    t.integer  "changcecount",   default: 0
+    t.integer  "guandiancount",  limit: 4,   default: 0
+    t.integer  "changcecount",   limit: 4,   default: 0
     t.datetime "pc_first_at"
     t.datetime "pc_last_at"
-    t.integer  "pingcecount",    default: 0
+    t.integer  "pingcecount",    limit: 4,   default: 0
     t.datetime "zjhd_first_at"
     t.datetime "zjhd_last_at"
-    t.integer  "zjhdcount",      default: 0
+    t.integer  "zjhdcount",      limit: 4,   default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "status",         default: 0
+    t.integer  "status",         limit: 4,   default: 0
     t.datetime "zixun_first_at"
     t.datetime "zixun_last_at"
-    t.integer  "zixuncount",     default: 0
+    t.integer  "zixuncount",     limit: 4,   default: 0
   end
 
   add_index "editors", ["name"], name: "index_editors_on_name", using: :btree
   add_index "editors", ["status"], name: "index_editors_on_status", using: :btree
 
-  create_table "guandians", force: true do |t|
-    t.integer  "editor_id"
+  create_table "fiveks", force: :cascade do |t|
+    t.string   "t1",         limit: 255
+    t.string   "cont",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "guandians", force: :cascade do |t|
+    t.integer  "editor_id",  limit: 4
     t.datetime "c_at"
-    t.string   "link"
-    t.string   "title"
-    t.text     "context"
+    t.string   "link",       limit: 255
+    t.string   "title",      limit: 255
+    t.text     "context",    limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -93,14 +100,14 @@ ActiveRecord::Schema.define(version: 20141010134355) do
   add_index "guandians", ["editor_id"], name: "index_guandians_on_editor_id", using: :btree
   add_index "guandians", ["link"], name: "index_guandians_on_link", using: :btree
 
-  create_table "pingces", force: true do |t|
-    t.integer  "editor_id"
+  create_table "pingces", force: :cascade do |t|
+    t.integer  "editor_id",  limit: 4
     t.datetime "c_at"
-    t.string   "title"
-    t.text     "context"
-    t.string   "link"
-    t.integer  "clicks"
-    t.string   "jielun"
+    t.string   "title",      limit: 255
+    t.text     "context",    limit: 65535
+    t.string   "link",       limit: 255
+    t.integer  "clicks",     limit: 4
+    t.string   "jielun",     limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -110,12 +117,12 @@ ActiveRecord::Schema.define(version: 20141010134355) do
   add_index "pingces", ["editor_id"], name: "index_pingces_on_editor_id", using: :btree
   add_index "pingces", ["jielun"], name: "index_pingces_on_jielun", using: :btree
 
-  create_table "zixuns", force: true do |t|
-    t.integer  "editor_id"
+  create_table "zixuns", force: :cascade do |t|
+    t.integer  "editor_id",  limit: 4
     t.datetime "c_at"
-    t.string   "title"
-    t.string   "link"
-    t.text     "context"
+    t.string   "title",      limit: 255
+    t.string   "link",       limit: 255
+    t.text     "context",    limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
   end

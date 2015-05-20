@@ -54,3 +54,5 @@ gem 'nokogiri'
 gem 'pry-rails', group: :development
 
 gem 'rails_12factor', group: :production
+
+gem 'rest-client'
