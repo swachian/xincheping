@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150520140150) do
+ActiveRecord::Schema.define(version: 20151012091500) do
+
+  create_table "cantings", force: :cascade do |t|
+    t.string   "title1",        limit: 255
+    t.string   "title2",        limit: 255
+    t.string   "yueshou",       limit: 255
+    t.string   "imglink",       limit: 255
+    t.string   "distance",      limit: 255
+    t.string   "timeleft",      limit: 255
+    t.integer  "isimgdownload", limit: 4,   default: 0
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
 
   create_table "changces", force: :cascade do |t|
     t.integer  "editor_id",  limit: 4
