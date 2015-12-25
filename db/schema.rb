@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151224083929) do
+ActiveRecord::Schema.define(version: 20151225023431) do
 
   create_table "cantings", force: :cascade do |t|
     t.string   "title1",        limit: 255
@@ -90,6 +90,18 @@ ActiveRecord::Schema.define(version: 20151224083929) do
 
   add_index "editors", ["name"], name: "index_editors_on_name", using: :btree
   add_index "editors", ["status"], name: "index_editors_on_status", using: :btree
+
+  create_table "electronic_police2s", force: :cascade do |t|
+    t.string   "position",   limit: 255
+    t.string   "wddm",       limit: 255
+    t.string   "gps",        limit: 255
+    t.string   "cjsj",       limit: 255
+    t.string   "gxsj",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "electronic_police2s", ["position"], name: "index_electronic_police2s_on_position", using: :btree
 
   create_table "electronic_polices", force: :cascade do |t|
     t.string   "position",   limit: 255
