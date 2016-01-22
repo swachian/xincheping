@@ -48,7 +48,7 @@ gem 'thin'
 # gem 'capistrano-rails', group: :development
 
 
-gem 'kaminari'
+gem 'kaminari', github: 'amatsuda/kaminari', branch: 'master'
 gem 'nokogiri'
 
 gem 'pry-rails', group: :development

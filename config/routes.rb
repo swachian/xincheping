@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'electronic_polices/list'
+
   get 'welcome/dashboard'
 
   resources :changces, :guandians, :pingces
