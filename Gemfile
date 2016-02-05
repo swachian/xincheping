@@ -46,7 +46,10 @@ gem 'unicorn'
 gem 'thin'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+group :development do
+    gem 'capistrano', '~> 3.1'
+    gem 'capistrano-rails', '~> 1.1'
+end
 
 gem 'kaminari', github: 'amatsuda/kaminari', branch: 'master'
 gem 'nokogiri'
