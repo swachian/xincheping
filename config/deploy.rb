@@ -29,7 +29,7 @@ set :deploy_to, '/opt/deploy/xincheping'
 # set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
 # Default value for default_env is {}
-set :default_env, { path: "~/.rbenv/versions/ruby-2.3/bin:$PATH" }
+set :default_env, { path: "/home/zhangyu/.rbenv/versions/ruby-2.3/bin:$PATH" }
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
