@@ -45,4 +45,11 @@ namespace :deploy do
     end
   end
 
+  task :restart_unicorn do
+      on roles(:web) do
+         execute :service, "cd #{current_path} &&  if [ -f tmp/pids/unicorn.pid ]; then kill `cat tmp/pids/unicorn.pid`; fi && bundle exec unicorn -c unicorn.conf.rb -D "
+      end
+  end
+  after "deploy:published", "restart_unicorn"
+
 end
