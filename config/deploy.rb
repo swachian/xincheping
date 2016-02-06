@@ -46,11 +46,13 @@ namespace :deploy do
     end
   end
 
-  task :restart_unicorn do
+  task :restart_server do
       on roles(:web) do
-        execute :rake, 'unicorn:restart'
+        with rails_env: fetch(:rails_env), rails_relative_url_root: '/xincheping' do
+            execute :rake, 'thin:restart', env: {rails_env: fetch(:rails_env) }
+        end
       end
   end
-  after "deploy:publishing", "restart_unicorn"
+  before "deploy:publishing", "restart_server"
 
 end
