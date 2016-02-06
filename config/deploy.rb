@@ -27,6 +27,7 @@ set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/
 
 # Default value for linked_dirs is []
 # set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets')
 
 # Default value for default_env is {}
 set :default_env, { path: "/home/zhangyu/.rbenv/versions/ruby-2.3/bin:$PATH" }
@@ -47,7 +48,7 @@ namespace :deploy do
 
   task :restart_unicorn do
       on roles(:web) do
-         execute :service, "cd #{current_path} &&  if [ -f tmp/pids/unicorn.pid ]; then kill `cat tmp/pids/unicorn.pid`; fi && bundle exec unicorn -c unicorn.conf.rb -D "
+        execute :rake, 'unicorn:restart'
       end
   end
   after "deploy:published", "restart_unicorn"
