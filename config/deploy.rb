@@ -47,12 +47,14 @@ namespace :deploy do
   end
 
   task :restart_server do
-      on roles(:web) do
+    on roles(:web) do
+      within current_path do
         with rails_env: fetch(:rails_env), rails_relative_url_root: '/xincheping' do
-            execute :rake, 'thin:restart', env: {rails_env: fetch(:rails_env) }
+          execute :rake, 'thin:restart', env: {rails_env: fetch(:rails_env) }
         end
       end
+    end
   end
-  before "deploy:publishing", "restart_server"
+  after "deploy:published", "restart_server"
 
 end
