@@ -51,6 +51,6 @@ namespace :deploy do
         execute :rake, 'unicorn:restart'
       end
   end
-  after "deploy:published", "restart_unicorn"
+  after "deploy:publishing", "restart_unicorn"
 
 end
