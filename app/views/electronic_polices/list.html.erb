@@ -1,3 +1,11 @@
+<%content_for :head do%>
+  <style type="text/css">
+  #allmap {width: 800px;height: 400px;overflow: hidden;margin:0;font-family:"微软雅黑";}
+  </style>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=xXGqIMtRUZez5bablQqGGmx4"></script>
+  <title>地图展示</title>
+<%end%>
+
 <h1>电子警察列表</h1>
 <br/>
 
@@ -8,12 +16,51 @@
 
 <br/>
 
+<div id="allmap"></div>
 <ul>
 <%@eps.each do |ep|%>
 <li>
-<%=ep.position%>
+<%=ep.position%>, <%=ep.gps%>
 </li>
 <%end%>
 </ul>
-
 <%=paginate @eps%>
+
+
+<script type="text/javascript">
+    // 百度地图API功能
+    //GPS坐标
+    //var points = ['121.79309, 31.09605', '121.452039, 30.903251']
+    var points = [<%=raw @eps.map{|s|"'#{s.gps},#{s.position}'"}.join(",")%>]
+    //var points =  ['121.515028, 31.268343,大连路/周家嘴路']
+    if (points.length == 0) {
+    
+        var x = 121.513681; 
+        var y = 31.270249
+    } else {
+        var x = points[0].split(/,\s*/)[0]
+        var y = points[0].split(/,\s*/)[1]
+    }
+    var ggPoint = new BMap.Point(x,y);
+
+    //地图初始化
+    var bm = new BMap.Map("allmap");
+    bm.centerAndZoom(ggPoint, 15);
+    bm.addControl(new BMap.NavigationControl());
+    bm.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放    
+
+    for (var i = 0; i < points.length; i++) {
+      //添加gps marker和label
+      var x = points[i].split(/,\s*/)[0]
+      var y = points[i].split(/,\s*/)[1]
+      var postion = points[i].split(/,\s*/)[2]
+    
+      var ggPoint = new BMap.Point(x,y);
+      var markergg = new BMap.Marker(ggPoint);
+      bm.addOverlay(markergg); //添加GPS marker
+      var labelgg = new BMap.Label(""+i+"."+postion,{offset:new BMap.Size(20,-10)});
+      markergg.setLabel(labelgg); //添加GPS label
+    }
+
+
+</script>
