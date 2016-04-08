@@ -20,7 +20,7 @@
 <ul>
 <%@eps.each do |ep|%>
 <li>
-<%=ep.id%>. <%=ep.position%>, <%=ep.cjsj%>
+<%=ep.id%>. <%=link_to(ep.position, electronic_polices_list_path(keyword: ep.position[0..2]))%>, <%=ep.cjsj%>
 </li>
 <%end%>
 </ul>
