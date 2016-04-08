@@ -14,6 +14,6 @@ namespace :sync do
 
   desc "同sh.122.gov.cn同步电子警察信息"
   task police2: :environment do
-    ElectronicPoloce2.test_fetch_one_page
+    ElectronicPolice2.test_fetch_one_page
   end
 end
