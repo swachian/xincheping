@@ -1,4 +1,4 @@
-class CreateElectronicPolice2s < ActiveRecord::Migration
+class CreateElectronicPolice2s < ActiveRecord::Migration[4.2]
   def change
     create_table :electronic_police2s do |t|
       t.string :position

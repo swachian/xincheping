@@ -1,4 +1,4 @@
-class CreateZixuns < ActiveRecord::Migration
+class CreateZixuns < ActiveRecord::Migration[4.2]
   def change
     create_table :zixuns do |t|
       t.integer :editor_id

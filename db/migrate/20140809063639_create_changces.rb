@@ -1,4 +1,4 @@
-class CreateChangces < ActiveRecord::Migration
+class CreateChangces < ActiveRecord::Migration[4.2]
   def change
     create_table :changces do |t|
       t.integer :editor_id

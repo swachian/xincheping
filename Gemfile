@@ -5,13 +5,13 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '2.6.0'
+ruby '2.6.9'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.2.2'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', group: :development
-gem 'mysql2'
+gem 'sqlite3', '1.4.0', group: :development
+gem 'mysql2', '0.5.2'
 #gem 'pg', group: :production
 # Use SCSS for stylesheets
 gem 'sass-rails'
@@ -21,9 +21,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 #gem 'therubyracer',  platforms: :ruby
-
+gem 'sprockets-rails', '3.2.1'
+gem 'sprockets', '3.7.2'
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '4.3.3'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -35,7 +36,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Rails Html Sanitizer for HTML sanitization
-gem 'rails-html-sanitizer'
+gem 'rails-html-sanitizer', '~> 1.0'
 
 
 # Use unicorn as the app server

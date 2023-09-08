@@ -3,7 +3,7 @@ class ElectronicPolice2 < ActiveRecord::Base
 
   def self.fetch_one_page()
     # 读取一个json，获得总的page数量
-    page ='http://sh.122.gov.cn/m/placesitectrl/loadBusincessList?city=%E6%B2%AAA&page=1&size=15&wdlxdm=29&ywfw='
+    page ='https://sh.122.gov.cn/m/placesitectrl/loadBusincessList?city=%E6%B2%AAA&page=1&size=15&wdlxdm=29&ywfw='
     response = RestClient.get(page, headers = {"Host": "sh.122.gov.cn",
     "Connection": "keep-alive",
     "Cache-Control": "max-age=0",
@@ -22,7 +22,7 @@ class ElectronicPolice2 < ActiveRecord::Base
     # 根据获得page数量进行循环访问
     1.upto(totalPages.to_i) do |pageNo|
       sleep(1)
-      pageNext ="http://sh.122.gov.cn/m/placesitectrl/loadBusincessList?city=%E6%B2%AAA&page=#{pageNo}&size=15&wdlxdm=29&ywfw="
+      pageNext ="https://sh.122.gov.cn/m/placesitectrl/loadBusincessList?city=%E6%B2%AAA&page=#{pageNo}&size=15&wdlxdm=29&ywfw="
       puts pageNext
       response = RestClient.get(pageNext, headers = {"Host": "sh.122.gov.cn",
       "Connection": "keep-alive",

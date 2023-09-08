@@ -1,4 +1,4 @@
-class CreateDaogous < ActiveRecord::Migration
+class CreateDaogous < ActiveRecord::Migration[4.2]
   def change
     create_table :daogous do |t|
       t.integer :daogoulist_id

@@ -1,4 +1,4 @@
-class CreateGuandians < ActiveRecord::Migration
+class CreateGuandians < ActiveRecord::Migration[4.2]
   def change
     create_table :guandians do |t|
       t.integer :editor_id

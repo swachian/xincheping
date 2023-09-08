@@ -1,4 +1,4 @@
-class CreatePingces < ActiveRecord::Migration
+class CreatePingces < ActiveRecord::Migration[4.2]
   def change
     create_table :pingces do |t|
       t.integer :editor_id

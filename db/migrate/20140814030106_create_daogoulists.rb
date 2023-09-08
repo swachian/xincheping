@@ -1,4 +1,4 @@
-class CreateDaogoulists < ActiveRecord::Migration
+class CreateDaogoulists < ActiveRecord::Migration[4.2]
   def change
     create_table :daogoulists do |t|
       t.string :title

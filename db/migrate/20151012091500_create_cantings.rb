@@ -1,4 +1,4 @@
-class CreateCantings < ActiveRecord::Migration
+class CreateCantings < ActiveRecord::Migration[4.2]
   def change
     create_table :cantings do |t|
       t.string :title1

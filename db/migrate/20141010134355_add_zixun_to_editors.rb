@@ -1,4 +1,4 @@
-class AddZixunToEditors < ActiveRecord::Migration
+class AddZixunToEditors < ActiveRecord::Migration[4.2]
   def change
     add_column :editors , :zixun_first_at, :timestamp #资讯收入的最后时间
     add_column :editors, :zixun_last_at, :timestamp #
