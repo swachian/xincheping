@@ -18,6 +18,7 @@ class ElectronicPolice2 < ActiveRecord::Base
 
     data = JSON.parse(response.body)['data']
     totalPages = data['totalPages']
+    puts totalPages
 
     # 根据获得page数量进行循环访问
     1.upto(totalPages.to_i) do |pageNo|
