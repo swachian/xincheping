@@ -2,11 +2,12 @@
 <html>
 <head>
   <title>Xincheping</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
   <%= yield :head %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
 </head>
 <body>
     <div role="navigation" class="navbar navbar-inverse navbar-fixed-top">

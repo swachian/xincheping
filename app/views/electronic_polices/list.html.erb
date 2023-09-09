@@ -10,8 +10,8 @@
 <br/>
 
 <form method="get" action="<%=electronic_polices_list_path %>" class="navbar-form ">
-  <input name="keyword" type="text" placeholder="搜索电子警察" class="form-control">
-  <button class="btn btn-danger" type="button" id="epssearch">查询</button>
+  <input name="keyword" type="text" placeholder="搜索电子警察" class="form-control" value="<%= params[:keyword] %>">
+  <input type="submit" value="查询" class="btn btn-danger" id="epssearch">
 </form>
 
 <br/>
